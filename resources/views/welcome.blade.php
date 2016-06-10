@@ -7,8 +7,18 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     </head>
     <body class="container">
-
-    <img src="http://placehold.it/20x20" alt="">
+    <nav class="navbar navbar-right">
+        <ul class="language_bar_chooser">
+            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                <li>
+                    <a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
+                        {{{ $properties['native'] }}}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </nav>
+        <img src="http://placehold.it/20x20" alt="">
         <header  class="col-md-12">
             <h1>{{$accueil[0]->titre}}</h1>
         </header>
